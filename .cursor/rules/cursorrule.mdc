@@ -1,0 +1,355 @@
+---
+alwaysApply: true
+---
+
+# Cursor Rules for 조용한 동네 카페 Landing Page
+
+## Project Overview
+This is a pre-opening landing page for a quiet neighborhood cafe ("조용한 동네 카페") targeting local residents. The brand emphasizes calm, minimal, and comfortable spaces for solo visitors.
+
+## Core Principles
+
+### Brand Aesthetic
+- **Quiet & Calm**: Avoid excessive animations, popups, or distracting interactions
+- **Minimal & Clean**: Keep UI simple and focused on content
+- **Local & Authentic**: Use honest, unexaggerated language (no trendy hype)
+- **Comfortable**: Design for long stays and solo visitors
+
+### Code Style
+
+#### HTML
+
+**Structure & Semantics**
+- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`)
+- Always include proper accessibility attributes:
+  - `aria-label` for icon buttons
+  - `aria-expanded` for toggle buttons
+  - `lang="ko"` on `<html>` tag
+- Use descriptive class names following BEM-like conventions (e.g., `hero-title`, `section-text`)
+- Include proper meta tags for SEO and mobile viewport
+
+**Formatting**
+- Use 2 spaces for indentation
+- Use double quotes for attributes
+- Self-closing tags should have trailing slash: `<img />`, `<br />`
+- Always include closing tags (no self-closing for HTML5 elements)
+- Keep attributes on same line as opening tag if short, otherwise one per line
+
+**Example:**
+```html
+<section class="section hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-title">시끄럽지 않아<br />혼자 오기 좋은 카페</h1>
+    </div>
+  </div>
+</section>
+```
+
+**Accessibility Requirements**
+- All images must have `alt` attributes (or `aria-hidden="true"` for decorative images)
+- Form inputs must have associated `<label>` elements
+- Interactive elements must be keyboard accessible
+- Use proper heading hierarchy (h1 → h2 → h3, no skipping levels)
+
+#### CSS
+
+**Variables & Custom Properties**
+- Use CSS custom properties (CSS variables) defined in `:root` for:
+  - Colors (primary, secondary, accent, text, backgrounds)
+  - Typography (font-family, sizes, line-height)
+  - Spacing (consistent spacing scale)
+  - Breakpoints (mobile: 768px, tablet: 1024px)
+  - Transitions (subtle, ~0.3s ease)
+- Variable naming: `--color-*`, `--spacing-*`, `--font-*`, `--bp-*`, `--transition-*`
+
+**Formatting**
+- Use 2 spaces for indentation
+- One selector per line in multi-selector rules
+- One property per line
+- Properties grouped logically (layout → typography → colors → effects)
+- Use single quotes for strings in content/urls
+- Trailing semicolon on last property
+
+**Organization**
+- Organize CSS with clear section comments using format:
+  ```css
+  /* ============================================
+     Section Name
+     ============================================ */
+  ```
+- Group related styles together
+- Use mobile-first responsive design approach
+- Media queries should be placed after base styles
+
+**Naming Conventions**
+- Use kebab-case for class names: `.hero-title`, `.section-text`
+- Use descriptive, semantic names (avoid abbreviations)
+- Modifier classes: `.btn-primary`, `.section-muted`
+- State classes: `.active`, `.scrolled`, `.open`
+
+**Color & Design**
+- Use muted, calm color palette (avoid bright/vibrant colors)
+- Always use CSS variables for colors, never hardcode hex values
+- Maintain consistent spacing using the spacing scale
+- Use `rem` units for spacing and typography
+- Use `px` only for borders and small details
+
+**Example:**
+```css
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-bg);
+}
+
+.hero-title {
+  font-size: 2rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+```
+
+**Performance**
+- Avoid deep nesting (max 3-4 levels)
+- Use efficient selectors (avoid overly specific selectors)
+- Group media queries by breakpoint when possible
+- Use `transform` and `opacity` for animations (GPU accelerated)
+
+#### JavaScript
+
+**General Rules**
+- Vanilla JavaScript only (no frameworks or libraries)
+- Use modern ES6+ syntax (const, let, arrow functions, template literals)
+- Use `const` by default, `let` only when reassignment is needed
+- Never use `var`
+
+**Formatting**
+- Use 2 spaces for indentation
+- Use single quotes for strings
+- Use semicolons at end of statements
+- Use trailing commas in objects and arrays
+- Maximum line length: 100 characters (soft limit)
+
+**Organization**
+- Use clear section comments to organize code:
+  ```javascript
+  // ============================================
+  // Section Name
+  // ============================================
+  ```
+- Group related functionality together
+- Declare variables at the top of their scope
+- Functions should be defined before they are called
+
+**Naming Conventions**
+- Use camelCase for variables and functions: `handleScroll`, `navToggle`
+- Use PascalCase only for constructors (if needed)
+- Use descriptive names (avoid abbreviations)
+- Boolean variables should start with `is`, `has`, `can`: `isExpanded`, `hasActiveClass`
+
+**DOM Manipulation**
+- Always check for element existence before manipulation
+- Cache DOM queries in variables when reused
+- Use `getElementById` for single elements, `querySelector` for complex selectors
+- Use `querySelectorAll` and iterate with `forEach` for multiple elements
+
+**Event Handling**
+- Use event delegation where appropriate
+- Always remove event listeners if elements are dynamically removed
+- Use named functions for event handlers (better for debugging)
+- Handle errors gracefully
+
+**Accessibility**
+- Update ARIA attributes when state changes
+- Ensure keyboard navigation works
+- Prevent default behavior only when necessary
+- Maintain focus management for modals/dropdowns
+
+**Example:**
+```javascript
+// ============================================
+// Mobile Navigation Toggle
+// ============================================
+
+const navToggle = document.getElementById('nav-toggle');
+const navList = document.getElementById('nav-list');
+
+function toggleNav() {
+  const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !isExpanded);
+  navList.classList.toggle('active');
+}
+
+if (navToggle && navList) {
+  navToggle.addEventListener('click', toggleNav);
+}
+```
+
+**Performance**
+- Debounce scroll and resize event handlers
+- Use `requestAnimationFrame` for animations
+- Avoid frequent DOM queries in loops
+- Keep interactions subtle and non-intrusive
+
+## Content Guidelines
+
+### Language & Tone
+- **Primary Language**: Korean (한국어)
+- **Tone**: Warm, honest, calm, and unpretentious
+- **Voice**: Speak as a neighbor, not a corporation
+- Avoid trendy buzzwords or excessive marketing language
+- Use natural, conversational Korean
+
+### Key Messages
+- Emphasize quiet atmosphere
+- Highlight suitability for solo visitors
+- Stress comfort for long stays
+- Focus on local neighborhood connection
+
+## Technical Requirements
+
+### Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+- Graceful degradation for older browsers
+
+### Performance
+- Optimize images (use appropriate formats, lazy loading)
+- Minimize JavaScript bundle size
+- Use efficient CSS (avoid unnecessary specificity)
+- Ensure fast page load times
+
+### Accessibility
+- WCAG 2.1 AA compliance target
+- Keyboard navigation support
+- Screen reader friendly
+- Proper heading hierarchy (h1 → h2 → h3)
+- Sufficient color contrast ratios
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints:
+  - Mobile: up to 767px
+  - Tablet: 768px - 1023px
+  - Desktop: 1024px+
+- Test on various screen sizes
+- Ensure touch targets are at least 44x44px on mobile
+
+## File Structure
+```
+/
+├── index.html          # Main landing page
+├── menu.html           # Menu page (post-opening)
+├── space.html          # Space/photos page (post-opening)
+├── styles.css          # Main stylesheet
+├── main.js             # Main JavaScript
+├── cafe_landing_prd.md # Product requirements document
+└── cafe_landing_trd.md # Technical requirements document
+```
+
+**File Naming Conventions**
+- Use lowercase with hyphens: `menu.html`, `hero-image.jpg`
+- HTML files: descriptive names ending in `.html`
+- CSS files: `styles.css` (singular, descriptive)
+- JavaScript files: `main.js` or descriptive names like `navigation.js`
+- Image files: descriptive names with format: `hero-main.jpg`, `gallery-item-1.png`
+
+## Development Guidelines
+
+### When Adding New Features
+1. Check PRD (`cafe_landing_prd.md`) for requirements
+2. Maintain brand consistency (quiet, minimal, calm)
+3. Ensure mobile responsiveness
+4. Add proper accessibility attributes
+5. Use existing CSS variables and spacing scale
+6. Keep JavaScript minimal and performant
+
+### When Editing Styles
+- Always use CSS custom properties from `:root`
+- Follow existing naming conventions
+- Maintain consistent spacing using the scale
+- Keep color palette muted and calm
+- Add comments for new major sections
+
+### When Adding Content
+- Use Korean language
+- Maintain warm, neighborly tone
+- Avoid excessive marketing language
+- Keep messages concise and clear
+- Focus on key value propositions
+
+## UX Constraints (from PRD)
+- **Minimize animations**: Avoid excessive or distracting animations
+- **No popups**: Keep popups to absolute minimum
+- **Calm scrolling**: Focus on smooth, calm scroll experience
+- **Restrained interactions**: Use subtle, brand-appropriate interactions only
+
+## Common Patterns
+
+### Buttons
+- Use `.btn` base class with modifiers (`.btn-primary`, `.btn-secondary`, `.btn-ghost`)
+- Include proper hover states (subtle transitions)
+- Ensure sufficient touch target size on mobile
+
+### Sections
+- Use `.section` base class with modifiers (`.section-muted`, `.section-accent`)
+- Consistent container structure with `.container` class
+- Proper heading hierarchy
+
+### Navigation
+- Mobile hamburger menu with proper ARIA attributes
+- Smooth scroll for anchor links
+- Close menu on link click (mobile)
+
+## Testing Checklist
+- [ ] Mobile responsiveness (various screen sizes)
+- [ ] Accessibility (keyboard navigation, screen readers)
+- [ ] Smooth scrolling functionality
+- [ ] Mobile menu toggle
+- [ ] All links work correctly
+- [ ] Images load properly
+- [ ] Performance (page load speed)
+
+## Code Quality Standards
+
+### Comments
+- **HTML**: Use `<!-- -->` for section markers and important notes
+- **CSS**: Use `/* */` for section headers and explanations
+- **JavaScript**: Use `//` for single-line, `/* */` for multi-line
+- Write comments in English for code, Korean for content-related notes
+- Explain "why" not "what" (code should be self-documenting)
+
+### Error Handling
+- Always check for element existence before DOM manipulation
+- Use optional chaining (`?.`) when appropriate
+- Provide fallbacks for missing elements
+- Log errors to console in development (remove in production)
+
+### Code Organization
+- Keep functions small and focused (single responsibility)
+- Extract repeated code into reusable functions
+- Group related code together
+- Separate concerns (HTML structure, CSS styling, JS behavior)
+
+### Best Practices
+- **DRY (Don't Repeat Yourself)**: Extract common patterns
+- **KISS (Keep It Simple, Stupid)**: Prefer simple solutions
+- **YAGNI (You Aren't Gonna Need It)**: Don't add features until needed
+- Write code that is easy to read and maintain
+- Test code in multiple browsers before committing
+
+## Notes
+- This is a pre-opening page, so some content may be placeholders
+- Menu and space pages will be added post-opening
+- Map integration will be added when location is finalized
+- Keep code maintainable for future content updates

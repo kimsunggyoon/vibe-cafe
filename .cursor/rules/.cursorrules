@@ -1,0 +1,162 @@
+# Cursor Rules for 조용한 동네 카페 Landing Page
+
+## Project Overview
+This is a pre-opening landing page for a quiet neighborhood cafe ("조용한 동네 카페") targeting local residents. The brand emphasizes calm, minimal, and comfortable spaces for solo visitors.
+
+## Core Principles
+
+### Brand Aesthetic
+- **Quiet & Calm**: Avoid excessive animations, popups, or distracting interactions
+- **Minimal & Clean**: Keep UI simple and focused on content
+- **Local & Authentic**: Use honest, unexaggerated language (no trendy hype)
+- **Comfortable**: Design for long stays and solo visitors
+
+### Code Style
+
+#### HTML
+- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`)
+- Always include proper accessibility attributes:
+  - `aria-label` for icon buttons
+  - `aria-expanded` for toggle buttons
+  - `lang="ko"` on `<html>` tag
+- Use descriptive class names following BEM-like conventions (e.g., `hero-title`, `section-text`)
+- Include proper meta tags for SEO and mobile viewport
+
+#### CSS
+- Use CSS custom properties (CSS variables) defined in `:root` for:
+  - Colors (primary, secondary, accent, text, backgrounds)
+  - Typography (font-family, sizes, line-height)
+  - Spacing (consistent spacing scale)
+  - Breakpoints (mobile: 768px, tablet: 1024px)
+  - Transitions (subtle, ~0.3s ease)
+- Organize CSS with clear section comments
+- Mobile-first responsive design approach
+- Use muted, calm color palette (avoid bright/vibrant colors)
+- Maintain consistent spacing using the spacing scale
+
+#### JavaScript
+- Vanilla JavaScript only (no frameworks)
+- Use clear section comments to organize code
+- Implement smooth scrolling for anchor links
+- Handle mobile navigation toggle with proper accessibility
+- Keep interactions subtle and non-intrusive
+- Use event delegation where appropriate
+- Always check for element existence before manipulation
+
+## Content Guidelines
+
+### Language & Tone
+- **Primary Language**: Korean (한국어)
+- **Tone**: Warm, honest, calm, and unpretentious
+- **Voice**: Speak as a neighbor, not a corporation
+- Avoid trendy buzzwords or excessive marketing language
+- Use natural, conversational Korean
+
+### Key Messages
+- Emphasize quiet atmosphere
+- Highlight suitability for solo visitors
+- Stress comfort for long stays
+- Focus on local neighborhood connection
+
+## Technical Requirements
+
+### Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+- Graceful degradation for older browsers
+
+### Performance
+- Optimize images (use appropriate formats, lazy loading)
+- Minimize JavaScript bundle size
+- Use efficient CSS (avoid unnecessary specificity)
+- Ensure fast page load times
+
+### Accessibility
+- WCAG 2.1 AA compliance target
+- Keyboard navigation support
+- Screen reader friendly
+- Proper heading hierarchy (h1 → h2 → h3)
+- Sufficient color contrast ratios
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints:
+  - Mobile: up to 767px
+  - Tablet: 768px - 1023px
+  - Desktop: 1024px+
+- Test on various screen sizes
+- Ensure touch targets are at least 44x44px on mobile
+
+## File Structure
+```
+/
+├── index.html          # Main landing page
+├── menu.html           # Menu page (post-opening)
+├── space.html          # Space/photos page (post-opening)
+├── styles.css          # Main stylesheet
+├── main.js             # Main JavaScript
+├── cafe_landing_prd.md # Product requirements document
+└── cafe_landing_trd.md # Technical requirements document
+```
+
+## Development Guidelines
+
+### When Adding New Features
+1. Check PRD (`cafe_landing_prd.md`) for requirements
+2. Maintain brand consistency (quiet, minimal, calm)
+3. Ensure mobile responsiveness
+4. Add proper accessibility attributes
+5. Use existing CSS variables and spacing scale
+6. Keep JavaScript minimal and performant
+
+### When Editing Styles
+- Always use CSS custom properties from `:root`
+- Follow existing naming conventions
+- Maintain consistent spacing using the scale
+- Keep color palette muted and calm
+- Add comments for new major sections
+
+### When Adding Content
+- Use Korean language
+- Maintain warm, neighborly tone
+- Avoid excessive marketing language
+- Keep messages concise and clear
+- Focus on key value propositions
+
+## UX Constraints (from PRD)
+- **Minimize animations**: Avoid excessive or distracting animations
+- **No popups**: Keep popups to absolute minimum
+- **Calm scrolling**: Focus on smooth, calm scroll experience
+- **Restrained interactions**: Use subtle, brand-appropriate interactions only
+
+## Common Patterns
+
+### Buttons
+- Use `.btn` base class with modifiers (`.btn-primary`, `.btn-secondary`, `.btn-ghost`)
+- Include proper hover states (subtle transitions)
+- Ensure sufficient touch target size on mobile
+
+### Sections
+- Use `.section` base class with modifiers (`.section-muted`, `.section-accent`)
+- Consistent container structure with `.container` class
+- Proper heading hierarchy
+
+### Navigation
+- Mobile hamburger menu with proper ARIA attributes
+- Smooth scroll for anchor links
+- Close menu on link click (mobile)
+
+## Testing Checklist
+- [ ] Mobile responsiveness (various screen sizes)
+- [ ] Accessibility (keyboard navigation, screen readers)
+- [ ] Smooth scrolling functionality
+- [ ] Mobile menu toggle
+- [ ] All links work correctly
+- [ ] Images load properly
+- [ ] Performance (page load speed)
+
+## Notes
+- This is a pre-opening page, so some content may be placeholders
+- Menu and space pages will be added post-opening
+- Map integration will be added when location is finalized
+- Keep code maintainable for future content updates
