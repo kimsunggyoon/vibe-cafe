@@ -121,6 +121,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  font-family: 'Noto Serif KR', serif;
   font-weight: 600;
   font-size: 1.125rem;
   color: var(--color-text);
@@ -738,6 +739,7 @@ a:hover {
 }
 
 .footer-brand {
+  font-family: 'Noto Serif KR', serif;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: var(--spacing-xs);
